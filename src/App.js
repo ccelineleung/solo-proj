@@ -1,9 +1,9 @@
 import React from 'react';
-import DoughnutChart from './charts/Doughnut';
-// import ReactDOM from 'react-dom/client';
+// import DoughnutChart from './charts/Doughnut';
+import ReactDOM from 'react-dom/client';
 // import './App.css';
 import CalculatorInput from './component/CalculatorInput';
-import TotalMonthlyFee from './component/TotalFee';
+//import TotalMonthlyFee from './component/TotalFee';
 
 function App() {
 
@@ -13,8 +13,8 @@ function App() {
         <h1>Mortgage Calculator</h1>
       </header>
       <CalculatorInput />
-      <DoughnutChart />
-      <TotalMonthlyFee />
+      {/* <DoughnutChart /> */}
+      {/* <TotalMonthlyFee /> */}
     </div>
   );
 }

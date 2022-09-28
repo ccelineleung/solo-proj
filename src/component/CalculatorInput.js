@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { initializeConnect } from 'react-redux/es/components/connect';
 // import ReactDOM from 'react-dom/client';
 import Form from './Form';
-
+import TotalMonthlyFee from './TotalFee';
 
 function CalculatorInput() {
   const [homeValue, setHomeValue] = useState('');
@@ -88,7 +88,10 @@ function CalculatorInput() {
       <button type='submit' onClick={calculateMonthlyPayment}>
         Calculate
       </button>
-      
+      <TotalMonthlyFee
+        monthlyPayment={monthlyPayment}
+        setMonthlyPayment={setMonthlyPayment}
+      />
     </>
   );
 }

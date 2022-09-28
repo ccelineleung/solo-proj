@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
 import Form from './Form';
+import DoughnutChart from '../charts/Doughnut';
 
-const TotalMonthlyFee = () => {
+const TotalMonthlyFee = ({ monthlyPayment }) => {
   const [propertyTax, setPropertyTax] = useState(0);
   const [homeInsur, setHomeInsur] = useState(0);
   const [PMIFee, setPMIFee] = useState(0);
   const [HOAFee, setHOAFee] = useState(0);
-  const [FinalMonsPayment, setFinalMonsPayment] = useState(0);
+  const [finalMonsPayment, setFinalMonsPayment] = useState(0);
 
   function totalFee() {
     setFinalMonsPayment(
-      Number(propertyTax) + Number(homeInsur) + Number(PMIFee) + Number(HOAFee)
+      Number(propertyTax) +
+        Number(homeInsur) +
+        Number(PMIFee) +
+        Number(HOAFee) +
+        Number(monthlyPayment)
     );
-    return FinalMonsPayment;
+    return finalMonsPayment;
   }
 
   const formatter = new Intl.NumberFormat('en-US', {
@@ -22,33 +27,43 @@ const TotalMonthlyFee = () => {
   });
 
   return (
-    <div className='optionalSeclection'>
-      <Form
-        text='Property tax per month'
-        value={propertyTax}
-        onKeyUp={totalFee}
-        onInput={(e) => setPropertyTax(e.target.value)}
+    <>
+      <div className='optionalSeclection'>
+        <Form
+          text='Property tax per month'
+          value={propertyTax}
+          onKeyUp={totalFee}
+          onInput={(e) => setPropertyTax(e.target.value)}
+        />
+        <Form
+          text="Homeowner's insurance per month"
+          value={homeInsur}
+          onKeyUp={totalFee}
+          onInput={(e) => setHomeInsur(e.target.value)}
+        />
+        <Form
+          text='PMI per month'
+          value={PMIFee}
+          onKeyUp={totalFee}
+          onInput={(e) => setPMIFee(e.target.value)}
+        />
+        <Form
+          text='HOA fees per month'
+          value={HOAFee}
+          onKeyUp={totalFee}
+          onInput={(e) => setHOAFee(e.target.value)}
+        />
+        <h4>Total Monthly Payment : {formatter.format(finalMonsPayment)}</h4>
+      </div>
+      <DoughnutChart
+        monthlyPayment={monthlyPayment}
+        propertyTax={propertyTax}
+        homeInsur={homeInsur}
+        PMIFee={PMIFee}
+        HOAFee={HOAFee}
+        finalMonsPayment={finalMonsPayment}
       />
-      <Form
-        text="Homeowner's insurance per month"
-        value={homeInsur}
-        onKeyUp={totalFee}
-        onInput={(e) => setHomeInsur(e.target.value)}
-      />
-      <Form
-        text='PMI per month'
-        value={PMIFee}
-        onKeyUp={totalFee}
-        onInput={(e) => setPMIFee(e.target.value)}
-      />
-      <Form
-        text='HOA fees per month'
-        value={HOAFee}
-        onKeyUp={totalFee}
-        onInput={(e) => setHOAFee(e.target.value)}
-      />
-      <h4>Total Monthly Payment : {formatter.format(FinalMonsPayment)}</h4>
-    </div>
+    </>
   );
 };
 
