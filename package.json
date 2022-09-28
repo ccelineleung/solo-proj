@@ -7,14 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --open --hot",
     "serve": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "dev": "nodemon server/server.js"
   },
+  "proxy": "http://localhost:5000/",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "chart.js": "^3.9.1",
     "chartjs-plugin-datalabels": "^2.1.0",
+    "express": "^4.18.1",
     "react": "^18.2.0",
     "react-chartjs-2": "^4.3.1",
     "react-dom": "^18.2.0"
@@ -26,6 +29,7 @@
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^2.0.20",
     "regenerator-runtime": "^0.13.9",
     "sass": "^1.55.0",
     "sass-loader": "^13.0.2",
