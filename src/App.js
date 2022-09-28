@@ -3,8 +3,10 @@ import DoughnutChart from './charts/Doughnut';
 // import ReactDOM from 'react-dom/client';
 // import './App.css';
 import CalculatorInput from './component/CalculatorInput';
+import TotalMonthlyFee from './component/TotalFee';
 
 function App() {
+
   return (
     <div className='App'>
       <header className='App-header'>
@@ -12,6 +14,7 @@ function App() {
       </header>
       <CalculatorInput />
       <DoughnutChart />
+      <TotalMonthlyFee />
     </div>
   );
 }

@@ -1,21 +1,11 @@
 import { Doughnut } from 'react-chartjs-2';
 import { Chart, ArcElement } from 'chart.js';
-import React, { useState } from 'react';
+import React from 'react';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+// import TotalMonthlyFee from '../component/TotalFee';
 Chart.register(ArcElement);
-//import Form from '../component/Form';
+
 //http request
-
-// const [propertyTax, setPropertyTax] = useState(0);
-// const [homeInsur, setHomeInsur] = useState(0);
-// const [PMIFee, setPMIFee] = useState(0);
-// const [HOAFee, setHOAFee] = useState(0);
-
-// function TotalFee() {
-//   let fee = propertyTax + homeInsur + PMIFee + HOAFee;
-//   console.log(`1`);
-//   return fee;
-// }
 
 const data = {
   labels: [
@@ -85,28 +75,7 @@ function DoughnutChart() {
           options={data.options}
         />
       </div>
-      {/* <div className='optionalSeclection'>
-        <Form
-          text='Property tax per month'
-          value={propertyTax}
-          onKeyUp={(e) => setPropertyTax(e.target.value)}
-        />
-        <Form
-          text="Homeowner's insurance per month"
-          value={HOAFee}
-          onKeyUp={(e) => setHomeInsur(e.target.value)}
-        />
-        <Form
-          text='PMI per month'
-          value={PMIFee}
-          onKeyUp={(e) => setPMIFee(e.target.value)}
-        />
-        <Form
-          text='HOA fees per month'
-          value={HOAFee}
-          onKeyUp={(e) => setHOAFee(e.target.value)}
-        />
-      </div> */}
+      {/* <TotalMonthlyFee /> */}
     </>
   );
 }

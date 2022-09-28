@@ -3,6 +3,7 @@ import { initializeConnect } from 'react-redux/es/components/connect';
 // import ReactDOM from 'react-dom/client';
 import Form from './Form';
 
+
 function CalculatorInput() {
   const [homeValue, setHomeValue] = useState('');
   // const [downPayment, setDownPayment] = useState(
@@ -87,6 +88,7 @@ function CalculatorInput() {
       <button type='submit' onClick={calculateMonthlyPayment}>
         Calculate
       </button>
+      
     </>
   );
 }
