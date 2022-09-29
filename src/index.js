@@ -2,19 +2,15 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import App from './App';
 import './App.scss';
+import { BrowserRouter } from 'react-router-dom';
+
 
 const el = document.getElementById('app');
 
-ReactDom.render(<App />, el);
+ReactDom.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  el
+);
 
-// import React from 'react';
-// import ReactDOM from 'react-dom/client';
-
-// import App from './App';
-
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-  
-//     <App />
-  
-// );
