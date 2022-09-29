@@ -33,7 +33,7 @@ function CalculatorInput() {
       percentageToDecimal(interestRate * loanAmount) /
         (1 - Math.pow(1 + percentageToDecimal(interestRate), -YTM(loanTerm)))
     );
-    
+
     return monthlyPayment;
   }
 
@@ -48,7 +48,7 @@ function CalculatorInput() {
   };
 
   return (
-    <div className='body'>
+    <div className='charContainer'>
       <form className='formCalLeft' onSubmit={(e) => e.preventDefault()}>
         <h1>Mortgage Calculator</h1>
         <Form
@@ -71,8 +71,10 @@ function CalculatorInput() {
         />
 
         <label>Loan Term</label>
-        <select onChange={handleTerm}>
-          <option value='30'>30-Years Fixed</option>
+        <select className='dropbtn' onChange={handleTerm}>
+          <option className='dropdown-content' value='30'>
+            30-Years Fixed
+          </option>
           <option value='25'>25-Years Fixed</option>
           <option value='15'>15-Years Fixed</option>
         </select>

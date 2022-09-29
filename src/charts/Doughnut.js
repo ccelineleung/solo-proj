@@ -69,7 +69,7 @@ function DoughnutChart({
 
   return (
     <>
-      <div style={{ width: '300px', margin: '60 auto' }}>
+      <div width='590' height='700' className='chartjs-render-monitor'>
         <h1>Monthly payment breakdown</h1>
         <Doughnut
           data={data}

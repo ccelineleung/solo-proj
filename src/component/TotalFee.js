@@ -58,7 +58,7 @@ const TotalMonthlyFee = ({ monthlyPayment }) => {
           onKeyUp={totalFee}
           onInput={(e) => setHOAFee(e.target.value)}
         />
-        <h2>Total Monthly Payment : {formatter.format(finalMonsPayment)}</h2>
+        <h2>Total Monthly Payment {formatter.format(finalMonsPayment)}</h2>
       </div>
       <DoughnutChart
         monthlyPayment={monthlyPayment}
