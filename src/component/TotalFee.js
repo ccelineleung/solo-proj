@@ -30,6 +30,11 @@ const TotalMonthlyFee = ({ monthlyPayment }) => {
     <>
       <div className='optionalSeclection'>
         <Form
+          text='Principal & interest'
+          readOnly={true}
+          value={Number(monthlyPayment).toFixed(2)}
+        />
+        <Form
           text='Property tax per month'
           value={propertyTax}
           onKeyUp={totalFee}
@@ -53,7 +58,7 @@ const TotalMonthlyFee = ({ monthlyPayment }) => {
           onKeyUp={totalFee}
           onInput={(e) => setHOAFee(e.target.value)}
         />
-        <h4>Total Monthly Payment : {formatter.format(finalMonsPayment)}</h4>
+        <h2>Total Monthly Payment : {formatter.format(finalMonsPayment)}</h2>
       </div>
       <DoughnutChart
         monthlyPayment={monthlyPayment}

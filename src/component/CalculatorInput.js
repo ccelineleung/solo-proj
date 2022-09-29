@@ -33,7 +33,7 @@ function CalculatorInput() {
       percentageToDecimal(interestRate * loanAmount) /
         (1 - Math.pow(1 + percentageToDecimal(interestRate), -YTM(loanTerm)))
     );
-
+    
     return monthlyPayment;
   }
 
@@ -48,8 +48,9 @@ function CalculatorInput() {
   };
 
   return (
-    <>
-      <form onSubmit={(e) => e.preventDefault()}>
+    <div className='body'>
+      <form className='formCalLeft' onSubmit={(e) => e.preventDefault()}>
+        <h1>Mortgage Calculator</h1>
         <Form
           text='Home Value'
           onKeyUp={calculateLoanAmount}
@@ -75,24 +76,25 @@ function CalculatorInput() {
           <option value='25'>25-Years Fixed</option>
           <option value='15'>15-Years Fixed</option>
         </select>
+
+        <h2 className='monthlypayment'>
+          Monthly Payment {formatter.format(monthlyPayment)}
+        </h2>
+        <button
+          className='buttonCal'
+          type='submit'
+          onClick={calculateMonthlyPayment}
+        >
+          Calculate
+        </button>
       </form>
-      {/* <div className='optionalSeclection'>
-        <Form text='Property tax per month' />
-        <Form text="Homeowner's insurance per month" />
-        <Form text='PMI per month' />
-        <Form text='HOA fees per month' />
-      </div> */}
-      <h4 className='alert alert-info fw-bold'>
-        Monthly Payment :{formatter.format(monthlyPayment)}
-      </h4>
-      <button type='submit' onClick={calculateMonthlyPayment}>
-        Calculate
-      </button>
-      <TotalMonthlyFee
-        monthlyPayment={monthlyPayment}
-        setMonthlyPayment={setMonthlyPayment}
-      />
-    </>
+      <form className='formCalRight '>
+        <TotalMonthlyFee
+          monthlyPayment={monthlyPayment}
+          setMonthlyPayment={setMonthlyPayment}
+        />
+      </form>
+    </div>
   );
 }
 

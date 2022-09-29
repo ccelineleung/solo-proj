@@ -5,6 +5,7 @@ function Form({ text, value, onInput, onKeyUp, readOnly = false, onChange }) {
     <div>
       <label>{text}</label>
       <input
+        className='formInputCal'
         type='number'
         value={value}
         onInput={onInput}

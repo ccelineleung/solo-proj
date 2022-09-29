@@ -16,31 +16,25 @@ function DoughnutChart({
   finalMonsPayment,
 }) {
   const data = {
-    labels: [
-      'Principal & interest',
-      'Property tax',
-      "Homeowner's insurance",
-      'PMI',
-      'HOA',
-    ],
+    labels: ['P & I', 'Prop. tax', 'HOI', 'PMI', 'HOA'],
     datasets: [
       {
         data: [monthlyPayment, propertyTax, homeInsur, PMIFee, HOAFee],
         backgroundColor: [
-          'rgba(225,99,132,0.2)',
-          'rgba(54,162,235,0.2)',
-          'rgba(255,206,86,0.2)',
-          'rgba(153,102,255,0.2)',
-          'rgba(255,159,64,0.2)',
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)',
+          'rgb(201, 203, 207)',
+          'rgb(75, 192, 192)',
         ], // match with the labels
         borderColor: [
-          'rgba(225,99,132,0.2)',
-          'rgba(54,162,235,0.2)',
-          'rgba(255,206,86,0.2)',
-          'rgba(153,102,255,0.2)',
-          'rgba(255,159,64,0.2)',
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)',
+          'rgb(201, 203, 207)',
+          'rgb(75, 192, 192)',
         ],
-        borderWidth: 1,
+        borderWidth: 5,
         hoverOffset: 6,
       },
     ],
@@ -63,10 +57,11 @@ function DoughnutChart({
             }).format(val);
 
             // Put them together
-            return `${label}: ${formattedVal}`;
+            if (val !== 0) {
+              return `${label}${formattedVal}`;
+            }
           },
-          color: '#B0E0E6',
-          backgroundColor: '#FFFAF0',
+          color: 'black',
         },
       },
     },

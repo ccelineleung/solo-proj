@@ -22,7 +22,7 @@
 import React from 'react';
 
 //import ReactDOM from 'react-dom';
-// import './App.css';
+import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 //import CalculatorInput from './component/CalculatorInput';
 import CalculatorInput from './component/CalculatorInput';
@@ -31,7 +31,6 @@ import Login from './component/Login';
 function App() {
   return (
     <>
-      
       <Routes>
         <Route path='/calculator' element={<CalculatorInput />} />
         <Route path='/' element={<Login />} />
