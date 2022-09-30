@@ -73,6 +73,7 @@
     font-size: 14px;
     cursor: pointer;
     border-radius: 10px;
+    margin:5px
 }
 
 .buttonCal:hover,.form button:active,.form button:focus {
@@ -86,7 +87,7 @@
     
     z-index: 1;
     background: #FFFFFF;
-    max-width: 360px;
+    max-width: 560px;
     padding: 45px;
     text-align: left;
     margin: 5px;
@@ -103,7 +104,7 @@
     z-index: 1;
     background: #FFFFFF;
     margin-right: 0px;
-    max-width: 660px;
+    max-width: 1000px;
     padding: 45px;
     text-align: left;
     margin: 5px;
@@ -166,3 +167,15 @@
    .optionalSeclection {
     margin:5px
    }
+
+   .formData {
+    position: relative;
+    border-radius: 10px;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 1000px;
+    margin: 10px;
+    padding: 45px;
+    
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }

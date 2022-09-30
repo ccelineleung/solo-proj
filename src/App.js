@@ -19,7 +19,7 @@
 
 // export default App;
 
-import React from 'react';
+import React, { useState } from 'react';
 
 //import ReactDOM from 'react-dom';
 import './App.scss';
@@ -29,11 +29,14 @@ import CalculatorInput from './component/CalculatorInput';
 import Login from './component/Login';
 
 function App() {
+  const [userName, setUsername] = useState('');
+  
   return (
     <>
       <Routes>
-        <Route path='/calculator' element={<CalculatorInput />} />
-        <Route path='/' element={<Login />} />
+        <Route path='/calculator' element={<CalculatorInput userName={userName}/>} />
+        <Route path='/' element={<Login setUsername={setUsername}/>} />
+        
       </Routes>
     </>
   );
