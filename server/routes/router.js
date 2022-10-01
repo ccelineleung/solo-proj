@@ -12,13 +12,17 @@ router.post('/userdata', dataController.getUserData, (req, res) => {
   res.status(200).json(res.locals.list);
 });
 
-router.post('/signup', userController.createUser, (req, res) => {
-  res.status(200).json(true);
-  //   ('true');
-});
+router.post(
+  '/signup',
+  userController.vertifyUser,
+  userController.createUser,
+  (req, res) => {
+    res.status(200).json(res.locals.status);
+  }
+);
 
-router.post('/login', userController.verifyUser, (req, res) => {
-  res.status(200).json(res.locals.auth);
+router.post('/login', userController.loginUser, (req, res) => {
+  res.status(200).json(res.locals.status);
 });
 
 router.post('/data', dataController.storeData, (req, res) => {

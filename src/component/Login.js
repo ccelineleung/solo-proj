@@ -30,8 +30,8 @@ function Login({ setUsername }) {
         body: JSON.stringify(body),
       });
       const data = await res.json();
-
-      if (data === true) {
+      console.log(data);
+      if (data.status === true) {
         setUsername(body.username);
 
         navigate('/calculator');
