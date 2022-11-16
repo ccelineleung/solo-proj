@@ -59,6 +59,7 @@ function Login({ setUsername }) {
     e.preventDefault();
     try {
       const body = { username: e.target[0].value, password: e.target[1].value };
+    
       const res = await fetch(`http://localhost:5000/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'Application/JSON' },
