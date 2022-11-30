@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
+
 function SavedData({ userName }) {
   const [userData, setUserData] = useState([]);
-
+  console.log(`userData`, userData)
   const getUserDataList = async () => {
     const body = {
       username: userName,
@@ -10,6 +11,27 @@ function SavedData({ userName }) {
     try {
       const res = await fetch(`http://localhost:5000/userdata`, {
         method: 'POST',
+        headers: { 'Content-Type': 'Application/JSON' },
+        body: JSON.stringify(body),
+      });
+      const data = await res.json();
+      // console.log(data)
+      setUserData(data);
+      console.log(userData)
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const deleteDatafromDB = async () => {
+    const body = {
+      username: userName,
+      home_id: id,
+    };
+    console.log(`home_id`,home_id)
+    try {
+      const res = await fetch(`http://localhost:5000/userdata`, {
+        method: 'DELETE',
         headers: { 'Content-Type': 'Application/JSON' },
         body: JSON.stringify(body),
       });
@@ -40,6 +62,7 @@ function SavedData({ userName }) {
             <th>INTEREST RATE</th>
             <th>LOAN TERM</th>
             <th>PAYMENT</th>
+            <th>DELETE</th>
           </tr>
         </thead>
         <tbody>
@@ -49,8 +72,9 @@ function SavedData({ userName }) {
               <td>{formatter.format(data.downpayment)}</td>
               <td>{formatter.format(data.loanamount)}</td>
               <td>{data.interestrate}</td>
-              <td>{formatter.format(data.loanterm)}</td>
+              <td>{data.loanterm}</td>
               <td>{formatter.format(data.payment)}</td>
+              <td><button id={data.id} onClick={deleteDatafromDB}>Delete</button></td>
             </tr>
           ))}
         </tbody>

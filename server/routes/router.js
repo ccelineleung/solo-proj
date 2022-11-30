@@ -29,4 +29,8 @@ router.post('/data', dataController.storeData, (req, res) => {
   res.status(200).json([]);
 });
 
+router.delete('/deleteRequest', dataController.deleteInfo, (req,res)=> {
+  res.status(200).json(res.locals.status)
+})
+
 module.exports = router;

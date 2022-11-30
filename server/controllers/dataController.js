@@ -1,5 +1,6 @@
 const { resolvePath } = require('react-router-dom');
 const db = require('../models/dbModels');
+const { use } = require('../routes/router');
 
 const dataController = {};
 
@@ -66,5 +67,27 @@ dataController.getUserData = (req, res, next) => {
     });
   }
 };
+
+dataController.deleteInfo = async (req,res,next) => {
+  const {id, username} = req.body;
+  const param = [id, username]
+  try {
+    const deleteQuery = `
+    DELETE FROM homedata 
+    WHERE id = $1 AND username = $2
+    RETURNING *
+    `;
+    const datas = await db.query(deleteQuery, param)
+    res.locals.status = {data: datas.rows[0], status:'successful deleted'}
+  }catch(error) {
+    return next({
+      log: 'Express error in dataController.deleteInfo middleware',
+      status: 400,
+      message: {
+        err: `dataController.deleteInfo: ERROR: ${error}`,
+      },
+    })
+  }
+}
 
 module.exports = dataController;

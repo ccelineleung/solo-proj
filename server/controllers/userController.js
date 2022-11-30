@@ -1,7 +1,10 @@
-const { UNSAFE_NavigationContext } = require('react-router-dom');
+
 const db = require('../models/dbModels');
 
 const userController = {};
+
+
+
 
 // Sign up route: create user in database
 userController.createUser = async (req, res, next) => {
@@ -49,6 +52,7 @@ userController.vertifyUser = async (req, res, next) => {
 
     // User does not exist in database
     if (verifyResult.rows.length === 0) {
+      console.log(verifyResult.rows)
       // proceed to next middleware to create user
       return next();
     } else {
