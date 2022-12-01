@@ -78,7 +78,8 @@ dataController.deleteInfo = async (req,res,next) => {
     RETURNING *
     `;
     const datas = await db.query(deleteQuery, param)
-    res.locals.status = {data: datas.rows[0], status:'successful deleted'}
+    res.locals.status = datas.rows[0];
+    return next()
   }catch(error) {
     return next({
       log: 'Express error in dataController.deleteInfo middleware',

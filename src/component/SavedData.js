@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 
-
 function SavedData({ userName }) {
   const [userData, setUserData] = useState([]);
-  console.log(`userData`, userData)
+  console.log(`userData`, userData);
   const getUserDataList = async () => {
     const body = {
       username: userName,
@@ -15,28 +14,29 @@ function SavedData({ userName }) {
         body: JSON.stringify(body),
       });
       const data = await res.json();
-      // console.log(data)
+      
       setUserData(data);
-      console.log(userData)
+      console.log(userData);
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  const deleteDatafromDB = async () => {
+  const deleteDatafromDB = async (id) => {
     const body = {
       username: userName,
       home_id: id,
     };
-    console.log(`home_id`,home_id)
+    // console.log(`home_id`,home_id)
     try {
-      const res = await fetch(`http://localhost:5000/userdata`, {
+      const res = await fetch(`http://localhost:5000/deleteRequest`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'Application/JSON' },
         body: JSON.stringify(body),
       });
       const data = await res.json();
       setUserData(data);
+      console.log(`userData`, userData);
     } catch (error) {
       console.log(error.message);
     }
@@ -66,15 +66,19 @@ function SavedData({ userName }) {
           </tr>
         </thead>
         <tbody>
-          {userData.map((data) => (
-            <tr>
+          {userData.map((data, index) => (
+            <tr key={index}>
               <td>{formatter.format(data.homevalue)}</td>
               <td>{formatter.format(data.downpayment)}</td>
               <td>{formatter.format(data.loanamount)}</td>
               <td>{data.interestrate}</td>
               <td>{data.loanterm}</td>
               <td>{formatter.format(data.payment)}</td>
-              <td><button id={data.id} onClick={deleteDatafromDB}>Delete</button></td>
+              <td>
+                <button onClick={() => deleteDatafromDB(data.id)}>
+                  Delete
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

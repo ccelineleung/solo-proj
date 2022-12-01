@@ -71,7 +71,7 @@ function Login({ setUsername }) {
         <input className='button' type='submit' value='Submit' />
       <Link to='/signup' >Dont have an account? Sign up now</Link>
       </form>
-      {/* <button onClick={click}>Click</button> */}
+     
     </div>
   );
 }
